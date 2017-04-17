@@ -41,6 +41,9 @@ func ^(lhs: Double, rhs: Double) -> Double {
     return pow(lhs, rhs)
 }
 
+func %(lhs: Double, rhs: Double) -> Double {
+    return pow(lhs, 1/rhs)
+}
 
 class ViewController: UIViewController {
 
@@ -53,6 +56,15 @@ class ViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    @IBAction func posnegBtnClicked(_ sender: UIButton) {
+        let currentText = self.displayLabel.text!
+        if currentText.range(of: ".") != nil {
+            self.displayLabel.text = "\(Double(currentText)! * -1)"
+        }
+        else{
+            self.displayLabel.text = "\(Int(currentText)! * -1)"
+        }
+     }
    
     @IBAction func numericBtnClicked(_ sender: UIButton) {
         // 2. Use the tag to identify which button it is.
@@ -135,9 +147,7 @@ class ViewController: UIViewController {
         case 1105: // Power
             try! self.core.addStep(^)
         case 1106: // Sqrt
-            break
-      //  case 1107: // Percentage
-       //     try! self.core.addStep(%)
+            try! self.core.addStep(%)
         default:
             fatalError("Unknown operator button: \(sender)")
         }

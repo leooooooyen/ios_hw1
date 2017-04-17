@@ -15,19 +15,6 @@ public enum _Step<Operand, Operator> {
     case `operator`(Operator)
 }
 
-/*
- public func pow(_ x: Double, by y: Double) -> Double {
-    guard y <= 0 else {
-        return x * pow(x, by: y-1)
-    }
-    return 1
-}
-
-public func ^(lhs: Double, rhs: Double) -> Double {
-    return pow(lhs, by: rhs)
-}
-*/
-
 public struct Core<Value> {
     public typealias Operand = Value
     public typealias Operator = (Value, Value) -> Value
